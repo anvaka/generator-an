@@ -1,0 +1,24 @@
+{
+  "name": "<%= _.slugify(_.humanize(appname)) %>",
+  "scripts": {
+    "start": "gulp",
+    "cover": "istanbul cover ./test/flatten.js",
+    "testlocal": "zuul --local 8080 --ui tape -- ./test/*.js",
+    "test": "zuul -- ./test/*.js"
+  },
+  "devDependencies": {
+    "zuul": "^1.5.4",
+    "browserify": "^3.33.0",
+    "gulp": "^3.5.6",
+    "gulp-util": "^2.2.14",
+    "gulp-less": "^1.2.3",
+    "gulp-concat": "^2.2.0",
+    "node-static": "^0.7.3",
+    "tape": "^2.12.0"
+  },
+  "dependencies": {
+    "twitter-bootstrap-3.0.0": "^3.0.0",
+    "an": "~0.0.2",
+    "angular": "^1.2.10"
+  }
+}
