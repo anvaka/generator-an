@@ -1,6 +1,21 @@
 # generator-bro
 
-Generates browserify friendly angular applications
+Generates browserify friendly angular applications. As any other yeoman generator this generator is very much opinionated. 
+# usage
+
+```
+yo bro appName
+npm install
+gulp
+```
+
+This will scaffold an angular app:
+
+* [`browserify`](http://browserify.org/) as code organization;
+* [`gulp`](http://gulpjs.com/) as a build tool;
+* [`bootstrap`](http://getbootstrap.com/) as css framework (only `less` part of it is used);
+* [`tape`](https://github.com/substack/tape) as a test harness;
+* [`zuul`](https://github.com/defunctzombie/zuul) as test runner
 
 # install
 
