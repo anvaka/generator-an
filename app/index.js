@@ -16,9 +16,9 @@ util.inherits(BroGenerator, yeoman.generators.Base);
 
 BroGenerator.prototype.buildFilesFromPackage = function () {
   this.copy('_.gitignore', '.gitignore');
-  this.copy('_.zuul.yml', '.zuul.yml');
   this.copy('_.travis.yml', '.travis.yml');
   this.copy('_gulpfile.js', 'gulpfile.js');
+  this.template('_.zuul.yml', '.zuul.yml');
   this.template('_LICENSE', 'LICENSE');
   this.template('_package.json', 'package.json');
   this.directory('test', 'test');

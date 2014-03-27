@@ -1,6 +1,6 @@
 {
   "name": "generator-bro",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generates browserify friendly angular applications",
   "main": "index.js",
   "scripts": {

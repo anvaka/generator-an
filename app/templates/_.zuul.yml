@@ -1,3 +1,4 @@
+name: <%= _.slugify(_.humanize(appname)) %>
 ui: tape
 browsers:
   - name: chrome

@@ -2,6 +2,12 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     path = require('path');
 
+var devServer = {
+  port: 31337,
+  livereload: 35729,
+  root: './dist'
+};
+
 var paths = {
   scripts: ['src/**/*.js'],
   markup: ['src/*.html'],
@@ -47,18 +53,24 @@ function watchChanges() {
   gulp.watch(paths.scripts, ['runBrowserify']);
   gulp.watch(paths.markup, ['copyDist']);
   gulp.watch('src/styles/*.less', ['compileLess']);
+  gulp.watch('dist/**').on('change', notifyLivereload);
 }
 
+var lr;
 function startStaticServer() {
-  var staticS = require('node-static'),
-      server = new staticS.Server('./dist'),
-      port = 31337;
-
-  require('http').createServer(function (request, response) {
-    request.addListener('end', function () {
-      server.serve(request, response);
-    }).resume();
-  }).listen(port, function (err) {
-    gutil.log("opened server on http://127.0.0.1:" + port);
+  var express = require('express');
+  var app = express();
+  app.use(require('connect-livereload')());
+  app.use(express.static(devServer.root));
+  app.listen(devServer.port, function () {
+    gutil.log("opened server on http://127.0.0.1:" + devServer.port);
   });
+
+  lr = require('tiny-lr')();
+  lr.listen(devServer.livereload);
+}
+
+function notifyLivereload(event) {
+  var fileName = require('path').relative(devServer.root, event.path);
+  lr.changed({ body: { files: [fileName] } });
 }
