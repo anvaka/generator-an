@@ -16,11 +16,12 @@ var paths = {
 
 gulp.task('runBrowserify', runBrowserify);
 gulp.task('compileLess', compileLess);
+gulp.task('makeDist', makeDist);
 gulp.task('copyDist', copyDist);
 gulp.task('watchChanges', watchChanges);
 gulp.task('startStaticServer', startStaticServer);
 
-gulp.task('build', ['runBrowserify', 'copyDist', 'compileLess']);
+gulp.task('build', ['makeDist', 'runBrowserify', 'copyDist', 'compileLess']);
 gulp.task('default', ['build', 'startStaticServer', 'watchChanges']);
 
 function runBrowserify() {
@@ -38,6 +39,13 @@ function compileLess() {
 		.pipe(gulp.dest('dist/styles'));
 }
 
+function makeDist() {
+  var fs = require('fs');
+  if (!fs.existsSync('./dist')) {
+    fs.mkdirSync('./dist');
+  }
+}
+
 function copyDist() {
   var concat = require('gulp-concat');
 
@@ -47,12 +55,15 @@ function copyDist() {
   gulp.src('./node_modules/angular/lib/angular.min.js')
       .pipe(concat('external.min.js'))
       .pipe(gulp.dest('./dist'));
+
+  gulp.src('./node_modules/twitter-bootstrap-3.0.0/fonts/*')
+      .pipe(gulp.dest('./dist/fonts/'));
 }
 
 function watchChanges() {
   gulp.watch(paths.scripts, ['runBrowserify']);
-  gulp.watch(paths.markup, ['copyDist']);
   gulp.watch('src/styles/*.less', ['compileLess']);
+  gulp.watch(paths.markup, ['copyDist']);
   gulp.watch('dist/**').on('change', notifyLivereload);
 }
 
