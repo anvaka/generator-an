@@ -1,10 +1,10 @@
-# generator-bro
+# generator-an
 
 Generates browserify friendly angular applications. As any other yeoman generator this generator is very much opinionated. 
 # usage
 
 ```
-yo bro appName
+yo an appName
 npm install
 gulp
 ```
@@ -22,7 +22,7 @@ This will scaffold an angular app:
 With [npm](https://npmjs.org) do:
 
 ```
-npm install generator-bro
+npm install generator-an
 ```
 
 # license

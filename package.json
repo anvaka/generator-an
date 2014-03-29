@@ -1,5 +1,5 @@
 {
-  "name": "generator-bro",
+  "name": "generator-an",
   "version": "0.0.1",
   "description": "Generates browserify friendly angular applications",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/anvaka/generator-bro.git"
+    "url": "git://github.com/anvaka/generator-an.git"
   },
   "keywords": [
     "browserify",
@@ -17,9 +17,9 @@
   "author": "Andrei Kashcha",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anvaka/generator-bro/issues"
+    "url": "https://github.com/anvaka/generator-an/issues"
   },
-  "homepage": "https://github.com/anvaka/generator-bro",
+  "homepage": "https://github.com/anvaka/generator-an",
   "dependencies": {
     "yeoman-generator": "^0.17.0-pre.2"
   }
