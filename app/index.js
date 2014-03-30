@@ -1,7 +1,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
-
+var chalk = require('chalk');
 
 var BroGenerator = module.exports = function BroGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
@@ -10,6 +10,7 @@ var BroGenerator = module.exports = function BroGenerator(args, options, config)
   this.appname = this.appname || path.basename(process.cwd());
   this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
   this.greeting = require('./lib/quotes')();
+  this.on('end', printInstructions);
 };
 
 util.inherits(BroGenerator, yeoman.generators.Base);
@@ -26,3 +27,7 @@ BroGenerator.prototype.buildFilesFromPackage = function () {
   this.mkdir('dist');
   this.mkdir('dist/styles');
 };
+
+function printInstructions() {
+  console.log('Please run ' + chalk.yellow.bold('npm install') + ' to install all dependencies');
+}
