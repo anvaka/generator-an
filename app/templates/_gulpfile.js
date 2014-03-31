@@ -14,15 +14,15 @@ var paths = {
   styles: { paths: [ path.join(__dirname, 'src/styles') ] }
 };
 
+gulp.task('default', ['build', 'startStaticServer', 'watchChanges']);
+gulp.task('build', ['makeDist', 'runBrowserify', 'copyDist', 'compileLess']);
+
 gulp.task('runBrowserify', runBrowserify);
 gulp.task('compileLess', compileLess);
 gulp.task('makeDist', makeDist);
 gulp.task('copyDist', copyDist);
 gulp.task('watchChanges', watchChanges);
 gulp.task('startStaticServer', startStaticServer);
-
-gulp.task('build', ['makeDist', 'runBrowserify', 'copyDist', 'compileLess']);
-gulp.task('default', ['build', 'startStaticServer', 'watchChanges']);
 
 function runBrowserify() {
   var fs = require('fs');
