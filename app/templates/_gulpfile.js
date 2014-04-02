@@ -1,10 +1,11 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    path = require('path');
+    path = require('path'),
+    argv = require('yargs').alias('p', 'port').argv;
 
 var devServer = {
-  port: 31337,
-  livereload: 35729,
+  port: argv.port || Math.round(31337 + Math.random() * 1000),
+  livereload: 35000 + Math.round((Math.random() * 1000)),
   root: './dist'
 };
 
@@ -71,7 +72,7 @@ var lr;
 function startStaticServer() {
   var express = require('express');
   var app = express();
-  app.use(require('connect-livereload')());
+  app.use(require('connect-livereload')({port: devServer.livereload }));
   app.use(express.static(devServer.root));
   app.listen(devServer.port, function () {
     gutil.log("opened server on http://127.0.0.1:" + devServer.port);

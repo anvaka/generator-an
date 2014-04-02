@@ -1,6 +1,6 @@
 {
   "name": "generator-an",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generates browserify friendly angular applications",
   "main": "index.js",
   "scripts": {
