@@ -1,6 +1,7 @@
 # generator-an
 
 Generates browserify friendly angular applications. As any other yeoman generator this generator is very much opinionated. 
+
 # usage
 
 ```
