@@ -34,9 +34,13 @@ function runBrowserify() {
 }
 
 function compileLess() {
-  var less = require('gulp-less');
+  var less = require('gulp-less')(paths.styles);
+  less.on('error', function (err) {
+    gutil.log('Failed to compile less: ', err.message);
+  });
+
 	gulp.src('src/styles/style.less')
-		.pipe(less(paths.styles))
+		.pipe(less)
 		.pipe(gulp.dest('dist/styles'));
 }
 
