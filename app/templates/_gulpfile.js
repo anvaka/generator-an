@@ -28,9 +28,13 @@ gulp.task('startStaticServer', startStaticServer);
 function runBrowserify() {
   var fs = require('fs');
 
-  require('browserify')()
+  var bundle = require('browserify')()
     .add('./src/scripts/index.js')
-    .bundle().pipe(fs.createWriteStream(path.join(__dirname + '/dist/bundle.js')));
+    .bundle() 
+    .on('error', function (err) {
+        gutil.log('Failed to browserify', err.message);
+    });
+  bundle.pipe(fs.createWriteStream(path.join(__dirname + '/dist/bundle.js')));
 }
 
 function compileLess() {
