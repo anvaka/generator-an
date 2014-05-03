@@ -32,7 +32,7 @@ function runBrowserify() {
     .add('./src/scripts/index.js')
     .bundle() 
     .on('error', function (err) {
-        gutil.log('Failed to browserify', err.message);
+        gutil.log(gutil.colors.red('Failed to browserify'), gutil.colors.yellow(err.message));
     });
   bundle.pipe(fs.createWriteStream(path.join(__dirname + '/dist/bundle.js')));
 }
@@ -40,7 +40,7 @@ function runBrowserify() {
 function compileLess() {
   var less = require('gulp-less')(paths.styles);
   less.on('error', function (err) {
-    gutil.log('Failed to compile less: ', err.message);
+    gutil.log(gutil.colors.red('Failed to compile less: '), gutil.colors.yellow(err.message));
   });
 
 	gulp.src('src/styles/style.less')
