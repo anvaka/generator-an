@@ -14,7 +14,7 @@ var devServer = {
 };
 
 var paths = {
-  scripts: ['src/**/*.js'],
+  scripts: ['src/**/*.*'],
   markup: ['src/*.html'],
   styles: { paths: [ path.join(__dirname, 'src/styles') ] }
 };
