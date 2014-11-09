@@ -24,8 +24,8 @@ To run a newly created website simply run
 gulp
 ```
 
-This will start a dev server on a random port. If you want to run dev server on
-the same port you can do
+This will start a dev server on a semi-random port (port is based on gulpfile
+path). If you want to run dev server on the same port you can do
 
 ```
 gulp -p 31337
