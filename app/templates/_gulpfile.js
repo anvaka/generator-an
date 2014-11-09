@@ -65,11 +65,7 @@ function copyDist() {
   gulp.src('./src/index.html')
       .pipe(gulp.dest('./dist'));
 
-  gulp.src('./node_modules/angular/lib/angular.min.js')
-      .pipe(concat('external.min.js'))
-      .pipe(gulp.dest('./dist'));
-
-  gulp.src('./node_modules/twitter-bootstrap-3.0.0/fonts/*')
+  gulp.src('./node_modules/bootstrap/fonts/*')
       .pipe(gulp.dest('./dist/fonts/'));
 }
 
